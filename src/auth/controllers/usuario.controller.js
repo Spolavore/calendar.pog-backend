@@ -11,8 +11,7 @@ const criarUsuario = async (req,res) => {
 
     try {
         const response = await usuarioService.criarUsuario(email, nome, senha);
-        console.log(response);
-        emailSender.sendEmail
+        emailSender.sendVerificationEmail(response.email, response.id_usuario, response.nome);
         return res.sendStatus(httpStatus.NO_CONTENT);
     } catch (error) {
         console.error(error);

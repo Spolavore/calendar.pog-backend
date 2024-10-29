@@ -6,7 +6,7 @@ const criarUsuario = async (email, nome, senha) => {
                   values ($1, $2, $3) RETURNING *`;    
     const params = [email, nome, senha];
     const dbResponse = await db.query(query,params);
-    return dbResponse;
+    return dbResponse.rows[0];
 }
 
 
